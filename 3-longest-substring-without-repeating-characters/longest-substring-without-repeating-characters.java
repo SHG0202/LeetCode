@@ -14,7 +14,13 @@ class Solution {
                         max_len = temp.length();
                     }
                     temp = "";
-                    i++;
+                    if(s.charAt(i) == s.charAt(j)){
+                        i++;
+                        break;
+                    }
+                    while(s.charAt(i) != s.charAt(j)){
+                        i++;
+                    }
                     break;
                 }else{
                     temp += String.valueOf(s.charAt(j));
