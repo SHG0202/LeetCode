@@ -13,17 +13,6 @@ class Solution {
 
         int len = temp.length();
         return checkP(temp, 0, len);
-        
-        // int i = 0; int j = len-1;
-        // while(i <= j){
-        //     if(temp.charAt(i) != temp.charAt(j)){
-        //         return false;
-        //     }
-        //     i++;
-        //     j--;
-        // }
-
-        // return true;
     }
 
     public boolean checkP(String temp, int i, int len){
