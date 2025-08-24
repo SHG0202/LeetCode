@@ -24,25 +24,49 @@ class Solution {
 
         //Method - 2
 
-        int[] htsPre = new int[len];
-        int[] htsSuf = new int[len];
+        // int[] htsPre = new int[len];
+        // int[] htsSuf = new int[len];
 
-        htsPre[0] = height[0];
-        htsSuf[len-1] = height[len-1];
+        // htsPre[0] = height[0];
+        // htsSuf[len-1] = height[len-1];
 
-        for(int j=1;j<len;j++){
-            if(height[j] > htsPre[j-1]) htsPre[j] = height[j];
-            else htsPre[j] = htsPre[j-1];
-        }
+        // for(int j=1;j<len;j++){
+        //     if(height[j] > htsPre[j-1]) htsPre[j] = height[j];
+        //     else htsPre[j] = htsPre[j-1];
+        // }
 
-        for(int j=len-2;j>=0;j--){
-            if(height[j] > htsSuf[j+1]) htsSuf[j] = height[j];
-            else htsSuf[j] = htsSuf[j+1];
-        }
+        // for(int j=len-2;j>=0;j--){
+        //     if(height[j] > htsSuf[j+1]) htsSuf[j] = height[j];
+        //     else htsSuf[j] = htsSuf[j+1];
+        // }
 
-        for(int i=0;i<len;i++){
-            int curr = Math.min(htsPre[i], htsSuf[i]);
-            if(curr > height[i]) count += curr - height[i]; 
+        // for(int i=0;i<len;i++){
+        //     int curr = Math.min(htsPre[i], htsSuf[i]);
+        //     if(curr > height[i]) count += curr - height[i]; 
+        // }
+
+        // return count;
+
+        int left = 0;
+        int right = len-1;
+        int lmax = 0; int rmax = 0;
+
+        while(left <= right){
+            if(height[left] <= height[right]){
+                if(height[left] >= lmax){
+                    lmax = height[left];
+                }else{
+                    count += (lmax - height[left]);
+                }
+                left++;
+            }else{
+                if(height[right] >= rmax){
+                    rmax = height[right];
+                }else{
+                    count += (rmax - height[right]);
+                }
+                right--;
+            }
         }
 
         return count;
