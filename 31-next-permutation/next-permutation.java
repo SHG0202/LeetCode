@@ -10,13 +10,13 @@ class Solution {
         }
 
         if(index == -1){
-            Arrays.sort(nums);
+            reverseArrayInPlace(nums, 0, len-1);
             return;
         }
 
         int min_max = 101;
         int swapIndex = -1;
-        for(int i=index+1;i<len;i++){
+        for(int i=len-1;i>index;i--){
             if(nums[i] > nums[index]){
                 if(nums[i] < min_max){
                     swapIndex = i;
@@ -29,6 +29,16 @@ class Solution {
         nums[index] = nums[swapIndex];
         nums[swapIndex] = temp;
 
-        Arrays.sort(nums,index+1, len);
+        reverseArrayInPlace(nums,index+1, len-1);
+    }
+
+    public void reverseArrayInPlace(int[] arr, int startIndex, int endIndex) {
+        while (startIndex < endIndex) {
+            int temp = arr[startIndex];
+            arr[startIndex] = arr[endIndex];
+            arr[endIndex] = temp;
+            startIndex++;
+            endIndex--;
+        }
     }
 }
