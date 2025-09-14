@@ -4,15 +4,12 @@ class Solution {
 
         if((long)m*k > (long)len) return -1;
 
-        int max = -1;
         int low = 1;
         int high = -1;
 
         for(int b : bloomDay){
-            max = Math.max(max, b);
+            high = Math.max(high, b);
         }
-
-        high = max;
 
         while(low <= high){
             int mid = (low+high)/2;
