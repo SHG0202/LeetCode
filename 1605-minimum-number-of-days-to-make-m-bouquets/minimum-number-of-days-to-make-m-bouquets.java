@@ -26,27 +26,21 @@ class Solution {
 
     public boolean isPossible(int[] bloomDay, int m, int k, int mid) {
         int len = bloomDay.length;
-        boolean possible = false;
-        int tempCount = m;
-        int tempFlower = k;
+        int tempCount = 0;
+        int finalCount = 0;
 
         for(int i=0;i<len;i++){
-            if(!possible && bloomDay[i] <= mid) possible = true;
-            if(possible){
-                if(bloomDay[i] <= mid && tempFlower > 0) {
-                    tempFlower--;
-                    if(tempFlower == 0) {
-                        tempCount--;
-                        tempFlower = k;
-                    }
-                }
-                else {
-                    possible = false;
-                    tempFlower = k;
-                }
+            if(bloomDay[i] <= mid) tempCount++;
+            else{
+                finalCount += tempCount / k;
+                tempCount = 0;
             }
-            if(tempCount == 0) return true;
+            
+            if(finalCount >= m) return true;
         }
+        finalCount += tempCount / k;
+
+        if(finalCount >= m) return true;
         return false;
     }
 }
