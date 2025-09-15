@@ -14,14 +14,14 @@ class Solution {
             int mid = (low + high)/2;
 
             if(getSum(nums, mid) <= threshold) {
-                result = Math.min(mid, result);
+                //result = Math.min(mid, result);
                 high = mid-1;
             }else{
                 low = mid+1;
             }
         }
 
-        return result;
+        return low;
     }
 
     public int getSum(int[] nums, int mid){
