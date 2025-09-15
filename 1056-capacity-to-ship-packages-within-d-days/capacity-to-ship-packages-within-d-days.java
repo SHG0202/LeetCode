@@ -8,15 +8,10 @@ class Solution {
             high += w;
         }
 
-        int result = 0;
-
         while(low <= high){
             int mid = (low+high)/2;
 
-            if(isPossible(weights, days, mid)) {
-                high = mid-1;
-                //result = mid;
-            }
+            if(isPossible(weights, days, mid)) high = mid-1;
             else low = mid+1;
         }
 
