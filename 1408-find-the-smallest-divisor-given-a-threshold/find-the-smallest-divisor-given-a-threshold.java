@@ -8,17 +8,11 @@ class Solution {
             high = Math.max(high, n);
         }
 
-        int result = high;
-
         while(low <= high){
             int mid = (low + high)/2;
 
-            if(getSum(nums, mid) <= threshold) {
-                //result = Math.min(mid, result);
-                high = mid-1;
-            }else{
-                low = mid+1;
-            }
+            if(getSum(nums, mid) <= threshold) high = mid-1;
+            else low = mid+1;
         }
 
         return low;
